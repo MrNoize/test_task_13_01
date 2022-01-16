@@ -17,6 +17,7 @@ restarted_s=`awk '$4 > 0 && NR > 1{print $1}' list.out | wc -l`
 user=${USER}
 date=`date +%d/%m/%y`
 printf "Количество работающих сервисов: %u\nКоличество сервисов с ошибками: %u\nКоличество перезапустившихся сервисов: %u\nИмя системного пользователя: %s\nДата: %s\n" $running_s $failed_s $restarted_s $user $date > ${SERVER_DATE}_report.out
+chmod ugo+r ${SERVER_DATE}_report.out
 tar -cz -f "${SERVER_DATE}" ${SERVER_DATE}*.out
 mkdir -p archives
 mv -n -t archives ${SERVER_DATE}
